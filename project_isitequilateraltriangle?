@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <cs50.h>
 
-float valid_triangle(float a,float b, float c);
+double valid_triangle(double a,double b, double c);
 
 int main (void)
 
@@ -11,12 +11,19 @@ int main (void)
     printf(" Hello! I will help you verify we can draw equilateral triangle based on side lengths you have found. Press enter to continue. \n");
     char enter = 0;
     while (enter != '\r' && enter != '\n') { enter = getchar(); }
-    
+
+        
     // Ask users to input 3 sides of Triangle
-    float side1 = get_float("Enter length of 1st side of triangle: ");
-    float side2 = get_float("Enter length of 2nd side of triangle: ");
-    float side3 = get_float("Enter length of 3rd side of triangle: ");
+    double side1 = get_double("Enter length of 1st side of triangle: "); 
+    double side2 = get_double("Enter length of 2nd side of triangle: ");
+    double side3 = get_double("Enter length of 3rd side of triangle: ");
     
+    // check if all values are positive
+   if (side1 <= 0 || side2 <= 0 || side3 <= 0)
+    {
+        printf("Sorry one of these sides 0 or less than zero. Please try again. \n");
+    }
+    else
     // Compare sides; of all equal advise it's equilateral
     if (side1 == side2 && side2 == side3 && side3 == side1) 
         printf("All three sides are equal so you've found an equilateral triangle. \n");
